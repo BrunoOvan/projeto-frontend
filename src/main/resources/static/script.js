@@ -12,10 +12,6 @@ const confirmMessage = document.getElementById('confirmMessage');
 const confirmYes = document.getElementById('confirmYes');
 const confirmNo = document.getElementById('confirmNo');
 
-
-
-
-
 let produtoParaExcluir = null;
 let editando = false;
 
@@ -36,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Funções da API
+// FunÃ§Ãµes da API
 async function carregarProdutos() {
     try {
         mostrarLoading(true);
@@ -52,8 +48,8 @@ async function carregarProdutos() {
         console.error('Erro:', error);
         produtosList.innerHTML = `
             <div class="empty-state">
-                <h3>❌ Erro ao carregar produtos</h3>
-                <p>Verifique se o servidor está rodando na porta 8080</p>
+                <h3>âŒ Erro ao carregar produtos</h3>
+                <p>Verifique se o servidor estÃ¡ rodando na porta 8080</p>
             </div>
         `;
     } finally {
@@ -103,7 +99,7 @@ async function salvarProduto(event) {
         const produtoSalvo = await response.json();
         console.log('Produto salvo:', produtoSalvo);
         
-        // Limpar formulário e recarregar lista
+        // Limpar formulÃ¡rio e recarregar lista
         limparFormulario();
         carregarProdutos();
         
@@ -127,7 +123,7 @@ async function excluirProduto(id) {
         }
         
         carregarProdutos();
-        alert('Produto excluído com sucesso!');
+        alert('Produto excluÃ­do com sucesso!');
         
     } catch (error) {
         console.error('Erro:', error);
@@ -160,13 +156,13 @@ async function buscarProdutos() {
     }
 }
 
-// Funções de UI
+// FunÃ§Ãµes de UI
 function exibirProdutos(produtos) {
     if (produtos.length === 0) {
         produtosList.innerHTML = `
             <div class="empty-state">
-                <h3>📭 Nenhum produto encontrado</h3>
-                <p>${searchInput.value ? 'Tente buscar com outros termos' : 'Cadastre o primeiro produto usando o formulário acima'}</p>
+                <h3>ðŸ“­ Nenhum produto encontrado</h3>
+                <p>${searchInput.value ? 'Tente buscar com outros termos' : 'Cadastre o primeiro produto usando o formulÃ¡rio acima'}</p>
             </div>
         `;
         return;
@@ -180,8 +176,8 @@ function exibirProdutos(produtos) {
                 <small>ID: ${produto.id}</small>
             </div>
             <div class="produto-actions">
-                <button class="btn-edit" onclick="editarProduto(${produto.id})">✏️ Editar</button>
-                <button class="btn-delete" onclick="solicitarExclusao(${produto.id}, '${produto.nome}')">🗑️ Excluir</button>
+                <button class="btn-edit" onclick="editarProduto(${produto.id})">âœï¸ Editar</button>
+                <button class="btn-delete" onclick="solicitarExclusao(${produto.id}, '${produto.nome}')">ðŸ—‘ï¸ Excluir</button>
             </div>
         </div>
     `).join('');
@@ -200,20 +196,20 @@ function editarProduto(id) {
             document.getElementById('nome').value = produto.nome;
             document.getElementById('preco').value = produto.preco;
             
-            // Alterar interface para modo edição
+            // Alterar interface para modo ediÃ§Ã£o
             formTitle.textContent = 'Editar Produto';
             document.getElementById('btnSalvar').textContent = 'Atualizar Produto';
             btnCancelar.style.display = 'inline-block';
             editando = true;
             
-            // Scroll para o formulário
+            // Scroll para o formulÃ¡rio
             document.querySelector('.form-section').scrollIntoView({ 
                 behavior: 'smooth' 
             });
         })
         .catch(error => {
             console.error('Erro:', error);
-            alert('Erro ao carregar produto para edição');
+            alert('Erro ao carregar produto para ediÃ§Ã£o');
         });
 }
 
