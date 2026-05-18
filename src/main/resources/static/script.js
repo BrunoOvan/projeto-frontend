@@ -1,4 +1,5 @@
-const API_BASE_URL = '/produtos';  
+const API_BASE_URL = 'https://projeto-frontend-c4rq.onrender.com/produtos';
+
 
 // Elementos DOM
 const produtoForm = document.getElementById('produtoForm');
