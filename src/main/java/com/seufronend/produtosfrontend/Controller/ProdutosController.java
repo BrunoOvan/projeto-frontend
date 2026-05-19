@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/produtos")
-@CrossOrigin(origins = "*")
 public class ProdutosController {
 
     private final List<Produto> produtos = Collections.synchronizedList(new ArrayList<>());
